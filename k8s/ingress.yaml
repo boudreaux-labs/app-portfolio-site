@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-site
+  namespace: portfolio-site
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:842851109414:certificate/babbb338-a5aa-465d-88c3-2f9c94af261a
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    external-dns.alpha.kubernetes.io/hostname: boudreauxlabs.com
+spec:
+  rules:
+    - host: boudreauxlabs.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-site
+                port:
+                  number: 80
