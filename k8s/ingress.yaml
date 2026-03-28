@@ -4,13 +4,14 @@ metadata:
   name: portfolio-site
   namespace: portfolio-site
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:842851109414:certificate/babbb338-a5aa-465d-88c3-2f9c94af261a
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
     external-dns.alpha.kubernetes.io/hostname: boudreauxlabs.com
+    # cert-arn injected at deploy time via ApplicationSet kustomize patch
 spec:
+  ingressClassName: alb
   rules:
     - host: boudreauxlabs.com
       http:
