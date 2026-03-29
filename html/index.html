@@ -171,6 +171,34 @@
     </section>
 
     <section>
+      <h2>Building on the Platform</h2>
+      <p>
+        The platform is designed for self-service. Adding a new application requires no changes to the
+        infrastructure layer &mdash; a developer creates a repo from the
+        <a href="https://github.com/boudreaux-labs/app-template" target="_blank">app-template</a>,
+        writes their app, and gets a live URL on the cluster automatically.
+      </p>
+      <div class="journey">
+        <div class="step">
+          <h3>1 &mdash; Create repo from template</h3>
+          <p>The <a href="https://github.com/boudreaux-labs/app-template" target="_blank">app-template</a> provides a hardened scaffold out of the box: GitHub Actions build pipeline, Dependabot with auto-merge (patch/minor only), pinned action SHAs, unprivileged nginx container, and Kubernetes manifests with resource limits and a full securityContext.</p>
+        </div>
+        <div class="step">
+          <h3>2 &mdash; Push app code</h3>
+          <p>Any push to <code>main</code> triggers the build pipeline: image built, pushed to GHCR, and <code>k8s/deployment.yaml</code> updated with the exact commit SHA. No floating tags, ever.</p>
+        </div>
+        <div class="step">
+          <h3>3 &mdash; SRE adds one GitOps entry</h3>
+          <p>A single ApplicationSet entry in the <code>gitops</code> repo tells ArgoCD to watch the new app repo. From that point on, ArgoCD owns the deploy &mdash; every commit to <code>main</code> syncs to the cluster automatically.</p>
+        </div>
+        <div class="step">
+          <h3>4 &mdash; App is live</h3>
+          <p>External DNS writes a Route53 record. The AWS Load Balancer Controller provisions an ALB. The app is reachable at <code>app-name.boudreauxlabs.com</code> with HTTPS, no manual steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <h2>Source</h2>
       <p>
         All infrastructure and application code is open source at
