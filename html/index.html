@@ -1,216 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Boudreaux Labs</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary":                    "#ffb595",
+            "primary-container":          "#95461e",
+            "on-primary":                 "#1a0800",
+            "background":                 "#131312",
+            "surface":                    "#131312",
+            "surface-dim":                "#131312",
+            "surface-container-lowest":   "#0a0a09",
+            "surface-container-low":      "#191918",
+            "surface-container":          "#20201f",
+            "surface-container-high":     "#2a2a29",
+            "surface-container-highest":  "#353533",
+            "surface-variant":            "#353533",
+            "on-surface":                 "#e5e2e0",
+            "on-surface-variant":         "#d9c2ba",
+            "on-background":              "#e5e2e0",
+            "outline":                    "#6e6560",
+            "outline-variant":            "#4a4540",
+          },
+          fontFamily: {
+            "headline": ["Space Grotesk"],
+            "body":     ["Inter"],
+            "label":    ["Space Grotesk"],
+          },
+          borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+        },
+      },
+    }
+  </script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0d1117;
-      color: #c9d1d9;
-      line-height: 1.6;
+      background-color: #131312;
+      background-image: radial-gradient(#3d3830 0.5px, transparent 0.5px);
+      background-size: 40px 40px;
+      background-attachment: fixed;
     }
-
-    header {
-      border-bottom: 1px solid #21262d;
-      padding: 2rem;
-      text-align: center;
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     }
-
-    header h1 {
-      font-size: 2rem;
-      color: #f0f6fc;
-      letter-spacing: 0.05em;
+    .glass-panel {
+      background: rgba(26, 25, 24, 0.75);
+      backdrop-filter: blur(12px);
     }
-
-    header p {
-      color: #8b949e;
-      margin-top: 0.5rem;
+    .nav-glass {
+      background: rgba(19, 19, 18, 0.8);
+      backdrop-filter: blur(16px);
     }
-
-    main {
-      max-width: 860px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    section { margin-bottom: 3rem; }
-
-    h2 {
-      font-size: 1.1rem;
-      color: #58a6ff;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #21262d;
-      padding-bottom: 0.5rem;
-    }
-
-    p { color: #8b949e; margin-bottom: 0.75rem; }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .tag {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 2em;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.85rem;
-      color: #c9d1d9;
-    }
-
-    .journey {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .step {
-      background: #161b22;
-      border: 1px solid #21262d;
-      border-left: 3px solid #58a6ff;
-      border-radius: 4px;
-      padding: 1rem 1.25rem;
-    }
-
-    .step h3 { color: #f0f6fc; font-size: 0.95rem; margin-bottom: 0.25rem; }
-    .step p  { margin: 0; font-size: 0.9rem; }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid #21262d;
-      color: #484f58;
-      font-size: 0.85rem;
-    }
-
-    a { color: #58a6ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
-<body>
+<body class="font-body text-on-surface selection:bg-primary selection:text-on-primary">
 
-  <header>
-    <h1>Boudreaux Labs</h1>
-    <p>Platform Engineering &mdash; Infrastructure &amp; GitOps</p>
-  </header>
+<!-- Header / Nav -->
+<header class="nav-glass fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-12 py-5 z-50">
+  <span class="text-xl font-bold tracking-tighter text-primary">Boudreaux Labs</span>
+  <nav class="hidden md:flex items-center gap-6">
+    <a class="text-on-surface-variant font-label text-[0.6875rem] font-medium uppercase tracking-widest hover:text-primary transition-colors duration-[400ms] ease-in-out" href="#about">About</a>
+    <a class="text-on-surface-variant font-label text-[0.6875rem] font-medium uppercase tracking-widest hover:text-primary transition-colors duration-[400ms] ease-in-out" href="#stack">Stack</a>
+    <a class="text-on-surface-variant font-label text-[0.6875rem] font-medium uppercase tracking-widest hover:text-primary transition-colors duration-[400ms] ease-in-out" href="#source">Source</a>
+    <a class="text-on-surface-variant font-label text-[0.6875rem] font-medium uppercase tracking-widest hover:text-primary transition-colors duration-[400ms] ease-in-out" href="#architecture">Architecture</a>
+  </nav>
+</header>
 
-  <main>
+<main class="pt-20">
 
-    <section>
-      <h2>About</h2>
-      <p>
-        As a Principal Director, the terminal is still home. I run my IDE with MCP connections into
-        observability tools, project trackers, and calendaring systems &mdash; using it to design and delegate
-        epics, interrogate system health, generate architecture diagrams from meeting transcripts, and roll up
-        large bodies of work for stakeholders. Boudreaux Labs is where I go deeper on the infrastructure and
-        platform patterns I ask my team to own.
-      </p>
-      <p>
-        Most recently, I've been exploring how AI tooling changes the game &mdash; specifically Claude Code,
-        which I use as a collaborative engineer throughout this project. It compresses the feedback loop in a
-        way that's hard to overstate: infrastructure decisions, debugging, security review &mdash; all as a
-        conversation in the IDE.
-      </p>
-      <p>
-        This site runs on the infrastructure it describes &mdash; deployed to Amazon EKS via ArgoCD,
-        with every change driven through a GitHub Actions pipeline. The entire platform, including this page,
-        is created and destroyed in a single pipeline run. No manual configuration, ever.
-      </p>
-      <p>
-        Boudreaux Labs is an independent learning space &mdash; built on personal time, unaffiliated with any employer.
-      </p>
-    </section>
-
-    <section>
-      <h2>Stack</h2>
-      <div class="stack">
-        <span class="tag">AWS EKS</span>
-        <span class="tag">Terraform</span>
-        <span class="tag">ArgoCD</span>
-        <span class="tag">GitHub Actions</span>
-        <span class="tag">AWS Load Balancer Controller</span>
-        <span class="tag">External DNS</span>
-        <span class="tag">IRSA / OIDC</span>
-        <span class="tag">Helm</span>
-        <span class="tag">nginx</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Route53</span>
-        <span class="tag">ACM</span>
+  <!-- Hero -->
+  <section class="py-16 md:py-20 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto space-y-3">
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 bg-primary animate-pulse inline-block"></span>
+        <span class="font-label text-primary text-[0.6875rem] tracking-[0.2em] uppercase font-bold">Platform Engineering</span>
       </div>
-    </section>
+      <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-none text-on-surface">
+        Boudreaux Labs
+      </h1>
+      <p class="font-headline text-lg md:text-xl text-primary font-light tracking-tight">
+        Infrastructure &amp; GitOps
+      </p>
+    </div>
+  </section>
 
-    <section>
-      <h2>The Journey</h2>
-      <div class="journey">
-        <div class="step">
-          <h3>Phase 1 &mdash; Infrastructure as Code</h3>
-          <p>EKS cluster, VPC, IAM, and all supporting AWS resources defined in Terraform. Pipeline-driven from day one &mdash; no manual AWS console changes.</p>
+  <!-- About -->
+  <section class="py-14 px-6 md:px-12 bg-surface-container-low" id="about">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-[180px_1fr] gap-10 md:gap-16">
+      <div class="pt-1">
+        <h2 class="font-label text-xs text-primary uppercase tracking-[0.2em] sticky top-24">About</h2>
+      </div>
+      <div class="space-y-4 text-on-surface-variant leading-relaxed">
+        <p>Most of my working day is spent figuring out what needs to be built, how it should be built,
+        who should build it, and when it needs to ship &mdash; and increasingly, I leverage AI to keep up
+        with the rapid pace. Hands-on time is rare.</p>
+        <p>Boudreaux Labs is how I stay honest. I use it to keep up with AI tooling and to actually build
+        the infrastructure patterns I ask my team to own &mdash; GitOps delivery, pipeline-driven IaC,
+        zero-manual-steps deploys. If I'm going to ask someone to own it, I should understand what it
+        looks like end to end.</p>
+        <p>Most recently that's meant Claude Code as a collaborative engineer &mdash; infrastructure
+        decisions, debugging, security review, all as a conversation in the IDE. It changes the feedback
+        loop in a way that's hard to overstate.</p>
+        <p>This site runs on the infrastructure it describes &mdash; EKS, ArgoCD, GitHub Actions.
+        Created and destroyed in a single pipeline run. No manual steps, ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section class="py-14 px-6 md:px-12" id="stack">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <span class="font-label text-xs text-primary uppercase tracking-[0.2em]">Tech Inventory</span>
+        <h2 class="font-headline text-3xl font-bold tracking-tighter mt-1 text-on-surface">The Stack</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-0.5 bg-outline-variant/10">
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">01</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">AWS EKS</p>
         </div>
-        <div class="step">
-          <h3>Phase 2 &mdash; GitOps Delivery</h3>
-          <p>ArgoCD manages everything running on the cluster. App deployments are pull-based &mdash; ArgoCD syncs from Git, not pushed by a pipeline.</p>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">02</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">Terraform</p>
         </div>
-        <div class="step">
-          <h3>Phase 3 &mdash; AI-Assisted Platform Engineering</h3>
-          <p>Claude Code used as a collaborative engineer throughout &mdash; not just for code generation, but for infrastructure decisions, debugging, and security review. A custom security auditor sub-agent runs on every push, triaging IAM, Kubernetes manifests, Dockerfiles, and pipeline configs. The goal: building a reusable AI harness that meaningfully accelerates how platform work gets done.</p>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">03</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">ArgoCD</p>
         </div>
-        <div class="step">
-          <h3>Phase 4 &mdash; Single Button Push</h3>
-          <p>One pipeline run brings the entire platform from zero to live. One manual trigger tears it down at end of day. Cost to idle: near $0.</p>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">04</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">GitHub Actions</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">05</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">AWS LBC</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">06</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">External DNS</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">07</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">IRSA / OIDC</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">08</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">Helm</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">09</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">nginx</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">10</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">Docker</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">11</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">Route53</p>
+        </div>
+        <div class="bg-surface p-5 group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <span class="font-label text-[0.6rem] text-outline mb-2 block">12</span>
+          <p class="font-headline text-sm font-bold text-on-surface group-hover:text-primary transition-colors duration-[400ms] ease-in-out">ACM</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Building on the Platform</h2>
-      <p>
-        The platform is designed for self-service. Adding a new application requires no changes to the
-        infrastructure layer &mdash; a developer creates a repo from the
-        <a href="https://github.com/boudreaux-labs/app-template" target="_blank">app-template</a>,
-        writes their app, and gets a live URL on the cluster automatically.
-      </p>
-      <div class="journey">
-        <div class="step">
-          <h3>1 &mdash; Create repo from template</h3>
-          <p>The <a href="https://github.com/boudreaux-labs/app-template" target="_blank">app-template</a> provides a hardened scaffold out of the box: GitHub Actions build pipeline, Dependabot with auto-merge (patch/minor only), pinned action SHAs, unprivileged nginx container, and Kubernetes manifests with resource limits and a full securityContext.</p>
-        </div>
-        <div class="step">
-          <h3>2 &mdash; Push app code</h3>
-          <p>Any push to <code>main</code> triggers the build pipeline: image built, pushed to GHCR, and <code>k8s/deployment.yaml</code> updated with the exact commit SHA. No floating tags, ever.</p>
-        </div>
-        <div class="step">
-          <h3>3 &mdash; SRE adds one GitOps entry</h3>
-          <p>A single ApplicationSet entry in the <code>gitops</code> repo tells ArgoCD to watch the new app repo. From that point on, ArgoCD owns the deploy &mdash; every commit to <code>main</code> syncs to the cluster automatically.</p>
-        </div>
-        <div class="step">
-          <h3>4 &mdash; App is live</h3>
-          <p>External DNS writes a Route53 record. The AWS Load Balancer Controller provisions an ALB. The app is reachable at <code>app-name.boudreauxlabs.com</code> with HTTPS, no manual steps.</p>
-        </div>
+  <!-- Source -->
+  <section class="py-14 px-6 md:px-12 bg-surface-container-low" id="source">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <span class="font-label text-xs text-primary uppercase tracking-[0.2em]">Source</span>
+        <p class="text-on-surface-variant mt-1.5 text-sm">All infrastructure and application code is open source.</p>
       </div>
-    </section>
+      <a href="https://github.com/boudreaux-labs" target="_blank" class="font-label text-sm font-bold uppercase tracking-widest text-primary border border-primary/30 px-8 py-3 hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out whitespace-nowrap">
+        github.com/boudreaux-labs
+      </a>
+    </div>
+  </section>
 
-    <section>
-      <h2>Source</h2>
-      <p>
-        All infrastructure and application code is open source at
-        <a href="https://github.com/boudreaux-labs" target="_blank">github.com/boudreaux-labs</a>.
-      </p>
-    </section>
+  <!-- Architecture Layer Cake -->
+  <section class="py-14 px-6 md:px-12 bg-surface-container-low" id="architecture">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <span class="font-label text-xs text-primary uppercase tracking-[0.2em]">Architecture</span>
+        <h2 class="font-headline text-3xl font-bold tracking-tighter mt-1 text-on-surface">How it's layered</h2>
+        <p class="text-on-surface-variant text-sm mt-2">Each layer depends on the one below it. The bottom never changes; the top can be torn down and rebuilt in minutes.</p>
+      </div>
 
-  </main>
+      <div class="space-y-0.5 bg-outline-variant/10">
 
-  <footer>
-    Boudreaux Labs &mdash; boudreauxlabs.com
-  </footer>
+        <!-- Layer 4 -->
+        <div class="bg-surface-container p-6 md:p-8 grid md:grid-cols-[64px_1fr_auto] gap-4 md:gap-8 items-start group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <div>
+            <span class="font-headline text-3xl font-bold text-outline-variant group-hover:text-primary transition-colors duration-[400ms] ease-in-out">04</span>
+          </div>
+          <div>
+            <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest">Ephemeral &mdash; Patterns</span>
+            <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">Other Apps &amp; Patterns</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Additional workloads deployed to the platform &mdash; including patterns like static sites that can keep serving when the cluster is down. The <a href="https://github.com/boudreaux-labs/app-template" target="_blank" class="text-primary hover:underline">app-template</a> scaffolds any new app with a hardened build pipeline, pinned SHAs, and Kubernetes manifests out of the box.</p>
+          </div>
+          <div class="md:text-right">
+            <a href="https://github.com/boudreaux-labs/app-template" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">app-template &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="bg-surface-container-low p-6 md:p-8 grid md:grid-cols-[64px_1fr_auto] gap-4 md:gap-8 items-start group hover:bg-surface-container transition-colors duration-[400ms] ease-in-out">
+          <div>
+            <span class="font-headline text-3xl font-bold text-outline-variant group-hover:text-primary transition-colors duration-[400ms] ease-in-out">03</span>
+          </div>
+          <div>
+            <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest">Ephemeral &mdash; Apps</span>
+            <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">App Deployments</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Apps running on the platform, managed by ArgoCD. This site is the first. Each app lives in its own repo, owns its own Dockerfile and Kubernetes manifests, and is onboarded via a single entry in the GitOps config. SRE owns the platform; developers own their apps.</p>
+          </div>
+          <div class="md:text-right">
+            <a href="https://github.com/boudreaux-labs/app-portfolio-site" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">app-portfolio-site &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="bg-surface-container p-6 md:p-8 grid md:grid-cols-[64px_1fr_auto] gap-4 md:gap-8 items-start group hover:bg-surface-container-high transition-colors duration-[400ms] ease-in-out">
+          <div>
+            <span class="font-headline text-3xl font-bold text-outline-variant group-hover:text-primary transition-colors duration-[400ms] ease-in-out">02</span>
+          </div>
+          <div>
+            <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest">Ephemeral &mdash; Platform</span>
+            <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">Compute Platform</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">EKS cluster with ArgoCD, AWS Load Balancer Controller, External DNS, and the full add-on stack. Spins up and tears down via a single GitHub Actions pipeline. ArgoCD provides the self-service layer &mdash; once the cluster is up, it automatically syncs and deploys every onboarded app from Git.</p>
+          </div>
+          <div class="md:text-right flex flex-col gap-2 md:items-end">
+            <a href="https://github.com/boudreaux-labs/eks-clusters" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">eks-clusters &rarr;</a>
+            <a href="https://github.com/boudreaux-labs/app-deploy" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">app-deploy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Layer 1 — Foundation -->
+        <div class="bg-surface-container-low p-6 md:p-8 grid md:grid-cols-[64px_1fr_auto] gap-4 md:gap-8 items-start group hover:bg-surface-container transition-colors duration-[400ms] ease-in-out border-b-2 border-primary/30">
+          <div>
+            <span class="font-headline text-3xl font-bold text-outline-variant group-hover:text-primary transition-colors duration-[400ms] ease-in-out">01</span>
+          </div>
+          <div>
+            <span class="font-label text-[0.6rem] text-primary/60 uppercase tracking-widest">Permanent &mdash; Foundation</span>
+            <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">Persistent Infrastructure</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">The things that never get torn down: AWS account, Route53 hosted zone, ACM certificate, GitHub OIDC provider, and the IAM roles that let GitHub Actions authenticate to AWS without static credentials. Created once and left alone. Everything above this layer depends on it.</p>
+          </div>
+          <div class="md:text-right flex flex-col gap-2 md:items-end">
+            <a href="https://github.com/boudreaux-labs/infra-deploy" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">infra-deploy &rarr;</a>
+            <a href="https://github.com/boudreaux-labs/aws-authentication" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">aws-authentication &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="w-full py-8 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-3 bg-surface-container-low">
+  <span class="text-base font-bold text-primary">Boudreaux Labs</span>
+  <span class="font-label text-[0.6875rem] text-outline uppercase tracking-widest">boudreauxlabs.com</span>
+</footer>
 
 </body>
 </html>
