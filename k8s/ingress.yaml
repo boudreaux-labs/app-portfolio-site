@@ -8,12 +8,24 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
-    external-dns.alpha.kubernetes.io/hostname: boudreauxlabs.com
+    external-dns.alpha.kubernetes.io/hostname: boudreauxlabs.com,www.boudreauxlabs.com
+    alb.ingress.kubernetes.io/actions.redirect-to-www: >-
+      {"type":"redirect","redirectConfig":{"host":"www.boudreauxlabs.com","path":"/#{path}","query":"#{query}","statusCode":"HTTP_301"}}
     # cert-arn injected at deploy time via ApplicationSet kustomize patch
 spec:
   ingressClassName: alb
   rules:
     - host: boudreauxlabs.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: redirect-to-www
+                port:
+                  name: use-annotation
+    - host: www.boudreauxlabs.com
       http:
         paths:
           - path: /
