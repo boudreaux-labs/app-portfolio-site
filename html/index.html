@@ -108,14 +108,20 @@
     <section>
       <h2>About</h2>
       <p>
-        Boudreaux Labs is a home lab built and maintained by Mr. Boudreaux,
-        a Platform Engineering leader focused on cloud infrastructure, AI, developer
-        tooling, and GitOps delivery patterns.
+        As a Principal Director, I find myself further from the terminal than I'd like &mdash; this lab is my
+        attempt at staying sharp. The engineers I lead keep raising the bar, and I intend to keep pace.
       </p>
       <p>
-        This site runs on the infrastructure it describes &mdash; deployed to
-        Amazon EKS via ArgoCD, with every change driven through a GitHub Actions
-        pipeline. No manual steps after the initial cluster apply.
+        Boudreaux Labs is where I get hands-on with the patterns I ask my team to own: infrastructure as code,
+        GitOps delivery, self-service developer platforms. Most recently, I've been exploring how AI tooling
+        changes the game &mdash; specifically Claude Code, which I use as a collaborative engineer throughout
+        this project. It compresses the feedback loop in a way that's hard to overstate: infrastructure
+        decisions, debugging, security review &mdash; all as a conversation in the IDE.
+      </p>
+      <p>
+        This site runs on the infrastructure it describes &mdash; deployed to Amazon EKS via ArgoCD,
+        with every change driven through a GitHub Actions pipeline. The entire platform, including this page,
+        is created and destroyed in a single pipeline run. No manual configuration, ever.
       </p>
     </section>
 
@@ -150,7 +156,7 @@
         </div>
         <div class="step">
           <h3>Phase 3 &mdash; AI-Assisted Platform Engineering</h3>
-          <p>Claude Code used as a pair programmer throughout. Infrastructure decisions, pipeline authoring, and debugging &mdash; all assisted by AI tooling in the IDE. A custom security auditor sub-agent runs automatically on every file change, triaging IAM, Kubernetes manifests, Dockerfiles, and pipeline configs without manual prompting.</p>
+          <p>Claude Code used as a collaborative engineer throughout &mdash; not just for code generation, but for infrastructure decisions, debugging, and security review. A custom security auditor sub-agent runs on every push, triaging IAM, Kubernetes manifests, Dockerfiles, and pipeline configs. The goal: building a reusable AI harness that meaningfully accelerates how platform work gets done.</p>
         </div>
         <div class="step">
           <h3>Phase 4 &mdash; Single Button Push</h3>
