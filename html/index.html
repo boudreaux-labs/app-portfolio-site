@@ -115,6 +115,43 @@
     </div>
   </section>
 
+  <!-- Principles -->
+  <section class="py-14 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <span class="font-label text-xs text-primary uppercase tracking-[0.2em]">How it operates</span>
+        <h2 class="font-headline text-3xl font-bold tracking-tighter mt-1 text-on-surface">Core Tenets</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-outline-variant/10">
+
+        <div class="bg-surface p-6 space-y-2">
+          <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest block">01</span>
+          <h3 class="font-headline text-base font-bold text-on-surface">Phoenix Environment</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Nothing is patched in place. The cluster is destroyed and rebuilt from scratch on every cycle &mdash; if it can't be recreated by the pipeline, it doesn't exist.</p>
+        </div>
+
+        <div class="bg-surface p-6 space-y-2">
+          <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest block">02</span>
+          <h3 class="font-headline text-base font-bold text-on-surface">Near-Zero Cost at Rest</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">SPOT instances, a single NAT gateway, minimal replicas. When the cluster is down, cost is essentially zero. The whole point is to learn without a running bill.</p>
+        </div>
+
+        <div class="bg-surface p-6 space-y-2">
+          <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest block">03</span>
+          <h3 class="font-headline text-base font-bold text-on-surface">Fully Within My Domain</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Personal AWS account, personal domain, personal GitHub org. No employer infrastructure, no shared accounts, no permission dependencies on anyone else.</p>
+        </div>
+
+        <div class="bg-surface p-6 space-y-2">
+          <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest block">04</span>
+          <h3 class="font-headline text-base font-bold text-on-surface">Pipeline Up, Pipeline Down</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">One pipeline trigger brings the entire compute and app stack live. Another tears it all down. No manual steps &mdash; no console, no kubectl, no config drift. Done almost daily.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Stack -->
   <section class="py-14 px-6 md:px-12" id="stack">
     <div class="max-w-7xl mx-auto">
@@ -207,7 +244,8 @@
           <div>
             <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest">Ephemeral &mdash; Patterns</span>
             <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">Other Apps &amp; Patterns</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Additional workloads deployed to the platform &mdash; including patterns like static sites that can keep serving when the cluster is down. The <a href="https://github.com/boudreaux-labs/app-template" target="_blank" class="text-primary hover:underline">app-template</a> scaffolds any new app with a hardened build pipeline, pinned SHAs, and Kubernetes manifests out of the box.</p>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Additional workloads and patterns deployed to the platform. One example: a static React site that keeps serving when the cluster is intentionally down &mdash; <a href="https://sleeping.boudreauxlabs.com" target="_blank" class="text-primary hover:underline">see it live</a> <span class="text-outline text-xs">(appears when cluster is down)</span>. The <a href="https://github.com/boudreaux-labs/app-template" target="_blank" class="text-primary hover:underline">app-template</a> scaffolds any new app with a hardened build pipeline, pinned SHAs, and Kubernetes manifests out of the box. This site's styling was designed with <a href="https://stitch.withgoogle.com" target="_blank" class="text-primary hover:underline">Stitch by Google</a>.</p>
+            <p class="text-on-surface-variant/60 text-xs mt-3 italic">More ideas, sites, and apps to come &mdash; eventually multi-cloud.</p>
           </div>
           <div class="md:text-right">
             <a href="https://github.com/boudreaux-labs/app-template" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">app-template &rarr;</a>
@@ -221,7 +259,7 @@
           </div>
           <div>
             <span class="font-label text-[0.6rem] text-outline uppercase tracking-widest">Ephemeral &mdash; Apps</span>
-            <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">App Deployments</h3>
+            <h3 class="font-headline text-lg font-bold mt-1 mb-1.5 text-on-surface">App Deployments <span class="font-label text-xs text-primary border border-primary/40 px-2 py-0.5 ml-2 align-middle">you are here</span></h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Apps running on the platform, managed by ArgoCD. This site is the first. Each app lives in its own repo, owns its own Dockerfile and Kubernetes manifests, and is onboarded via a single entry in the GitOps config. SRE owns the platform; developers own their apps.</p>
           </div>
           <div class="md:text-right">
@@ -256,8 +294,8 @@
             <p class="text-on-surface-variant text-sm leading-relaxed">The things that never get torn down: AWS account, Route53 hosted zone, ACM certificate, GitHub OIDC provider, and the IAM roles that let GitHub Actions authenticate to AWS without static credentials. Created once and left alone. Everything above this layer depends on it.</p>
           </div>
           <div class="md:text-right flex flex-col gap-2 md:items-end">
-            <a href="https://github.com/boudreaux-labs/infra-deploy" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">infra-deploy &rarr;</a>
-            <a href="https://github.com/boudreaux-labs/aws-authentication" target="_blank" class="font-label text-xs text-primary/70 hover:text-primary transition-colors duration-[400ms] ease-in-out uppercase tracking-widest whitespace-nowrap">aws-authentication &rarr;</a>
+            <span class="font-label text-xs text-outline uppercase tracking-widest whitespace-nowrap flex items-center gap-1.5 justify-end"><span class="material-symbols-outlined" style="font-size:14px">lock</span>infra-deploy <span class="normal-case text-outline/60 tracking-normal">(private until security pass)</span></span>
+            <span class="font-label text-xs text-outline uppercase tracking-widest whitespace-nowrap flex items-center gap-1.5 justify-end"><span class="material-symbols-outlined" style="font-size:14px">lock</span>aws-authentication <span class="normal-case text-outline/60 tracking-normal">(private until security pass)</span></span>
           </div>
         </div>
 
