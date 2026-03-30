@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: portfolio-site
-          image: ghcr.io/boudreaux-labs/app-portfolio-site:79b9db4e734e15b80dd07e6152a9164e47b38167
+          image: ghcr.io/boudreaux-labs/app-portfolio-site:8228cc593a2b7332731dd0bd25857c8a89c2eeae
           ports:
             - containerPort: 80
           resources:
